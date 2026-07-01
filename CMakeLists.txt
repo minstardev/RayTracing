@@ -10,8 +10,8 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 
-add_executable(rtweekend
+add_executable(RayTracingInOneWeekend
     src/main.cpp
 )
 
-target_include_directories(rtweekend PRIVATE src)
+target_include_directories(RayTracingInOneWeekend PRIVATE src)
