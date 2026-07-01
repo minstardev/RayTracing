@@ -1,0 +1,18 @@
+build/
+out/
+output/*.ppm
+output/*.png
+*.exe
+*.out
+.vs/
+.vscode/ipch/
+CMakeUserPresets.json
+
+# Visual Studio / CMake 생성 파일 (build 폴더 밖에 생기는 경우 대비)
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
