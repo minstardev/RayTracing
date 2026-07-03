@@ -10,10 +10,10 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 
+file(GLOB SOURCES CONFIGURE_DEPENDS src/*.cpp src/*.h)
+
 add_executable(RayTracingInOneWeekend
-    src/main.cpp
-    src/vec3.h
-    src/color.h
+    ${SOURCES}
     external/stb/stb_image_write.h
 )
 
