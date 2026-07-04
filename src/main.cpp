@@ -9,8 +9,30 @@
 #include <iostream>
 #include <vector>
 
+double hit_sphere(const point3 &center, double radius, const ray &r)
+{
+    vec3 oc = center - r.origin();
+    auto a = r.direction().length_squared();
+    auto h = dot(r.direction(), oc);
+    auto c = oc.length_squared() - radius * radius;
+    auto discriminant = h * h - a * c;
+
+    if (discriminant < 0)
+        return -1.0;
+    else
+        return (h - std::sqrt(discriminant)) / a;
+}
+
 color ray_color(const ray &r)
 {
+    point3 sphere_center(0, 0, -1);
+    auto t = hit_sphere(sphere_center, 0.5, r);
+    if (t > 0.0)
+    {
+        vec3 N = unit_vector(r.at(t) - sphere_center);
+        return 0.5 * color(N.x() + 1, N.y() + 1, N.z() + 1);
+    }
+
     vec3 unit_direction = unit_vector(r.direction());
     auto a = 0.5 * (unit_direction.y() + 1.0);
 
@@ -27,7 +49,6 @@ int main()
     image_height = (image_height < 1) ? 1 : image_height;
 
     // Camera
-
     auto focal_length = 1.0;
     auto viewport_height = 2.0;
     auto viewport_width = viewport_height * (double(image_width) / image_height);
