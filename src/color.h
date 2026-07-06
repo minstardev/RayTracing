@@ -1,9 +1,9 @@
 #ifndef COLOR_H
 #define COLOR_H
 
+#include "rtweekend.h"
 #include "vec3.h"
 #include <cstdint>
-#include <iostream>
 #include <vector>
 
 // scale [0,1] to [0,255] (PPM)
