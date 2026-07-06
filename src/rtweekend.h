@@ -25,6 +25,7 @@ inline double degrees_to_radians(double degrees)
 
 // Common Headers
 
+#include "camera.h"
 #include "color.h"
 #include "interval.h"
 #include "ray.h"
