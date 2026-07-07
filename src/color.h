@@ -7,6 +7,13 @@
 #include <cstdint>
 #include <vector>
 
+inline double linear_to_gamma(double linear_component)
+{
+    if (linear_component > 0)
+        return std::sqrt(linear_component);
+    return 0;
+}
+
 // scale [0,1] to [0,255] (PPM)
 inline void write_color(std::ostream &out, const color &pixel_color)
 {
@@ -29,6 +36,11 @@ inline void write_color(std::vector<uint8_t> &buffer, int pixel_index, const col
     double r = pixel_color.x();
     double g = pixel_color.y();
     double b = pixel_color.z();
+
+    // apply gamma correction
+    r = linear_to_gamma(r);
+    g = linear_to_gamma(g);
+    b = linear_to_gamma(b);
 
     int rbyte = int(255.999 * r);
     int gbyte = int(255.999 * g);
